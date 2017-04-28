@@ -51,8 +51,8 @@
    for (let p = 0; p < characters.length; p += 1) {
      result.push([characters[p], CountOfcharacters[characters[p]]]);
    }
-   result = result.sort((a, b) =>  b[1] - a[1]);
-   return result;
+
+   return result.sort((a, b) =>  b[1] - a[1]);
  };
 
 console.log(characterFrequency('miaaiaaippi'))
