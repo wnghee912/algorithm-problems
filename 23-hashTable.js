@@ -102,6 +102,7 @@ const makeHashTable = () => {
     const index = getIndexBelowMaxForKey(key, storageLimit);
     storage[index].removeNode(key);
   };
+
   return result;
 };
 
