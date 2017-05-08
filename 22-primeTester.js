@@ -16,6 +16,5 @@ const primeTester = function(n) {
   return true;
 };
 
-console.log(primeTester(11))
-console.log(primeTester(1212))
-console.log(primeTester(11))
+console.log(primeTester(11)); // true //
+console.log(primeTester(1212)); // false //
