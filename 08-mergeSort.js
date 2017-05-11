@@ -98,36 +98,33 @@
 const merge = (firstArray, secondArray) => {
   let firstArrayIndex = 0;
   let secondArrayIndex = 0;
-  const mergeArray = [];
-  while (firstArray.length + secondArray.length > mergeArray.length) {
-    if (firstArray[firstArrayIndex] <= secondArray[secondArrayIndex] || !secondArray[secondArrayIndex]) {
-      mergeArray.push(firstArray[firstArrayIndex]);
+  const result = [];
+  const sumArrayLength = firstArray.length + secondArray.length;
+
+  while (firstArrayIndex + secondArrayIndex < sumArrayLength) {
+    if (firstArray[firstArrayIndex] <= secondArray[secondArrayIndex] ||
+      secondArrayIndex >= secondArray.length) {
+      result.push(firstArray[firstArrayIndex]);
       firstArrayIndex += 1;
     } else {
-      mergeArray.push(secondArray[secondArrayIndex]);
+      result.push(secondArray[secondArrayIndex]);
       secondArrayIndex += 1;
     }
   }
-  return mergeArray;
+  return result;
 };
 
 const mergeSort = (array) => {
-  let newArray = [];
-  for (let i = 0; i < array.length; i += 1) {
-    newArray.push([array[i]]);
+  if (array.length <= 1) {
+    return array;
   }
-  while (newArray.length !== 1) {
-    const tempArray = [];
-    for (let p = 0; p < newArray.length; p += 2) {
-      if (newArray[p + 1]) {
-        tempArray.push(merge(newArray[p], newArray[p + 1]));
-      } else {
-        tempArray.push(newArray[p]);
-      }
-    }
-    newArray = tempArray;
-  }
-  return newArray[0];
+
+  const mid = Math.floor(array.length / 2);
+  const left = array.slice(0, mid);
+  const right = array.slice(mid);
+
+  return merge(mergeSort(left), mergeSort(right));
 };
 
-console.log(mergeSort([4,7,4,3,9,1,2,10,11,1,2,4,21,18]));
+console.log(merge([1, 4, 7, 11], [2, 3, 8]));
+console.log(mergeSort([4, 7, 4, 12, 33, 9, 1, 2, 10, 11, 1, 2]));
