@@ -55,5 +55,6 @@ const bubbleSort = function(array) {
   return array;
 };
 
-console.log(bubbleSort([2, 1, 3, 3, 5, 2, 1, 7]))
-console.log(bubbleSort([2, 1, 3, 5, 1, 2, 3, 9, 4, 6]))
+console.log(bubbleSort([2, 1, 3, 3, 5, 2, 1, 7]));
+console.log(bubbleSort([2, 1, 3, 5, 1, 2, 3, 9, 4, 6]));
+console.log(bubbleSort([1, 3, 4, 7, 11, 18, 33, 40]));
