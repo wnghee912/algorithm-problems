@@ -35,22 +35,21 @@
 // Feel free to add helper functions if needed.
 
 
-const bubbleSort = (array) => {
+const bubbleSort = function(array) {
   // Your code here.
-  for (let i = 1; i < array.length; i += 1) {
-    let flag = 0;
-    for (let p = 0; p < array.length - i; p += 1) {
+  const arrayLength = array.length;
+  for (let i = 1; i < arrayLength; i += 1) {
+    let changeCount = 0;
+    for (let p = 0; p < arrayLength - i; p += 1) {
       if (array[p] > array[p + 1]) {
         const temp = array[p];
         array[p] = array[p + 1];
         array[p + 1] = temp;
-        flag += 1;
+        changeCount += 1;
       }
     }
-    if (flag === 0) {
+    if (!changeCount) {
       return array;
-    } else {
-      continue;
     }
   }
   return array;
