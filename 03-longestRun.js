@@ -13,19 +13,20 @@
  */
 
 const longestRun = function (string) {
-  let resultCharactersInfo = [0, 0];
+  const resultCharactersInfo = [0, 0];
   let startIndex = 0;
   let endIndex = 0;
-  let duplicateCount = 0;
-  let newDuplicateCount = 0;
+  let longestRunCharacter = 0;
+  let newLongestRunCharacter = 0;
 
   for (let i = 0; i < string.length; i += 1) {
     if (string[i] !== string[i + 1]) {
       endIndex = i;
-      newDuplicateCount = endIndex - startIndex + 1;
-      if (newDuplicateCount > duplicateCount) {
-        resultCharactersInfo = [startIndex, endIndex];
-        duplicateCount = newDuplicateCount;
+      newLongestRunCharacter = endIndex - startIndex;
+      if (newLongestRunCharacter > longestRunCharacter) {
+        resultCharactersInfo[0] = startIndex;
+        resultCharactersInfo[1] = endIndex;
+        longestRunCharacter = newLongestRunCharacter
       }
       startIndex = i + 1;
     }
@@ -38,3 +39,16 @@ console.log(longestRun("aabbc"))
 console.log(longestRun("abcd"))
 console.log(longestRun('aabbbdddbbbbccdddccccsssscsacasvbbbb')); // [8, 11]
 console.log(longestRun('aabbbdddbbbbccdddccccsssscsacasvbbbbb')); // [32, 36]
+//
+// for (let i = 0; i < string.length; i += 1) {
+//   if (string[i] !== string[i + 1]) {
+//     endIndex = i;
+//     newDuplicateCount = endIndex - startIndex + 1;
+//     if (newDuplicateCount > duplicateCount) {
+//       resultCharactersInfo = [startIndex, endIndex];
+//       duplicateCount = newDuplicateCount;
+//     }
+//     startIndex = i + 1;
+//   }
+// }
+// return resultCharactersInfo;

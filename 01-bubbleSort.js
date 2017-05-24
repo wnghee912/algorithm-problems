@@ -38,13 +38,18 @@
 const bubbleSort = function(array) {
   // Your code here.
   const arrayLength = array.length;
-  for (let i = arrayLength - 1; i >= 0; i -= 1) {
-    for (let p = arrayLength - i; p > 0; p -= 1) {
-      if (array[p - 1] > array[p]) {
-        const temp = array[p - 1];
-        array[p - 1] = array[p];
-        array[p] = temp;
+  for (let i = 1; i < arrayLength; i += 1) {
+    let changeCount = 0;
+    for (let p = 0; p < arrayLength - i; p += 1) {
+      if (array[p] > array[p + 1]) {
+        const temp = array[p];
+        array[p] = array[p + 1];
+        array[p + 1] = temp;
+        changeCount += 1;
       }
+    }
+    if (!changeCount) {
+      return array;
     }
   }
   return array;
