@@ -96,22 +96,22 @@
  */
 
 const merge = (firstArray, secondArray) => {
+  const mergeArray = [];
+  const sumArrayLength = firstArray.length + secondArray.length;
   let firstArrayIndex = 0;
   let secondArrayIndex = 0;
-  const result = [];
-  const sumArrayLength = firstArray.length + secondArray.length;
 
-  while (firstArrayIndex + secondArrayIndex < sumArrayLength) {
-    if (firstArray[firstArrayIndex] <= secondArray[secondArrayIndex] ||
-      secondArrayIndex >= secondArray.length) {
-      result.push(firstArray[firstArrayIndex]);
+  while (mergeArray.length < sumArrayLength) {
+    if (firstArray[firstArrayIndex] < secondArray[secondArrayIndex] ||
+      secondArrayIndex === secondArray.length) {
+      mergeArray.push(firstArray[firstArrayIndex]);
       firstArrayIndex += 1;
     } else {
-      result.push(secondArray[secondArrayIndex]);
+      mergeArray.push(secondArray[secondArrayIndex]);
       secondArrayIndex += 1;
     }
   }
-  return result;
+  return mergeArray;
 };
 
 const mergeSort = (array) => {
